@@ -17,7 +17,6 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
 
     public SvegliaInterfaccia() {
         initComponents();
-        this.setSize(800, 700);
 
         radioSveglia = new Sveglia();
         timer = new Timer(60000, e -> {
@@ -54,6 +53,7 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
         piu = new javax.swing.JButton();
         meno = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -83,8 +83,6 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
@@ -108,14 +106,10 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Radio Sveglia");
-        setSize(new java.awt.Dimension(900, 700));
-        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 36)); // NOI18N
         jLabel1.setText("Radio Sveglia");
         jLabel1.setToolTipText("");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(199, 42, 210, 80);
 
         ora.setText("imposta ora");
         ora.addActionListener(new java.awt.event.ActionListener() {
@@ -123,8 +117,6 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
                 oraActionPerformed(evt);
             }
         });
-        getContentPane().add(ora);
-        ora.setBounds(18, 147, 210, 23);
 
         sveglia.setText("imposta sveglia");
         sveglia.addActionListener(new java.awt.event.ActionListener() {
@@ -132,8 +124,6 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
                 svegliaActionPerformed(evt);
             }
         });
-        getContentPane().add(sveglia);
-        sveglia.setBounds(18, 215, 210, 23);
 
         data.setText("imposta data");
         data.addActionListener(new java.awt.event.ActionListener() {
@@ -141,8 +131,6 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
                 dataActionPerformed(evt);
             }
         });
-        getContentPane().add(data);
-        data.setBounds(18, 262, 171, 23);
 
         stazione.setText("cambia stazione");
         stazione.addActionListener(new java.awt.event.ActionListener() {
@@ -150,12 +138,8 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
                 stazioneActionPerformed(evt);
             }
         });
-        getContentPane().add(stazione);
-        stazione.setBounds(18, 321, 116, 23);
 
         jLabel2.setText("volume");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(73, 373, 40, 32);
 
         piu.setText("+");
         piu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,8 +152,6 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
                 piuActionPerformed(evt);
             }
         });
-        getContentPane().add(piu);
-        piu.setBounds(124, 374, 43, 32);
 
         meno.setText("-");
         meno.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -182,150 +164,280 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
                 menoActionPerformed(evt);
             }
         });
-        getContentPane().add(meno);
-        meno.setBounds(18, 374, 43, 32);
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(265, 275, 10, 0);
+
+        jLabel3.setText("-");
+
+        jLabel4.setText("-");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RTL 102.5", "Subasio 107.7", "RDS 103.450", "Arctic Monkeys 105.67" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(158, 321, 152, 22);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(272, 140, 55, 36);
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(272, 210, 55, 36);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(200, 265, 55, 36);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(272, 265, 55, 36);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(350, 265, 55, 36);
 
         jLabel5.setText("ora");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(441, 150, 30, 16);
 
         jLabel6.setText("ora sveglia");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(441, 218, 100, 16);
 
         jLabel7.setText("data");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(441, 275, 60, 16);
 
         jLabel8.setText("stazione");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(330, 324, 80, 16);
 
         jLabel9.setText("volume");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(442, 381, 76, 16);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel10.setText("00");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(581, 143, 34, 36);
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel13.setText("gg");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(530, 262, 33, 36);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel14.setText("mm");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(575, 262, 41, 36);
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel15.setText("aa");
-        getContentPane().add(jLabel15);
-        jLabel15.setBounds(634, 262, 45, 36);
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 2, 16)); // NOI18N
         jLabel16.setText("0.00");
-        getContentPane().add(jLabel16);
-        jLabel16.setBounds(461, 321, 162, 36);
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 2, 16)); // NOI18N
         jLabel17.setText("Hz");
-        getContentPane().add(jLabel17);
-        jLabel17.setBounds(635, 321, 23, 36);
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel18.setText("5");
-        getContentPane().add(jLabel18);
-        jLabel18.setBounds(524, 370, 26, 36);
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel19.setText(":");
-        getContentPane().add(jLabel19);
-        jLabel19.setBounds(621, 143, 13, 36);
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel21.setText("00");
-        getContentPane().add(jLabel21);
-        jLabel21.setBounds(640, 143, 31, 36);
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel25.setText("00");
-        getContentPane().add(jLabel25);
-        jLabel25.setBounds(575, 203, 34, 36);
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel26.setText(":");
-        getContentPane().add(jLabel26);
-        jLabel26.setBounds(615, 203, 13, 36);
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel27.setText("00");
-        getContentPane().add(jLabel27);
-        jLabel27.setBounds(634, 203, 31, 36);
 
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField7);
-        jTextField7.setBounds(350, 140, 55, 36);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(350, 210, 55, 36);
 
         jLabel11.setText("ore");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(280, 120, 26, 16);
 
         jLabel28.setText("min");
-        getContentPane().add(jLabel28);
-        jLabel28.setBounds(350, 120, 26, 16);
 
         jLabel29.setText("min");
-        getContentPane().add(jLabel29);
-        jLabel29.setBounds(350, 190, 23, 16);
 
         jLabel30.setText("ore");
-        getContentPane().add(jLabel30);
-        jLabel30.setBounds(280, 190, 26, 16);
 
-        jLabel31.setText("-");
-        getContentPane().add(jLabel31);
-        jLabel31.setBounds(260, 275, 10, 16);
-
-        jLabel32.setText("-");
-        getContentPane().add(jLabel32);
-        jLabel32.setBounds(335, 275, 10, 20);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(301, 301, 301)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(ora, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel5)
+                .addGap(122, 122, 122)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(301, 301, 301)
+                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(sveglia, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addGap(76, 76, 76)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel4)
+                .addGap(6, 6, 6)
+                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel7)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(stazione)
+                .addGap(24, 24, 24)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel8)
+                .addGap(87, 87, 87)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(meno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(piu, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(275, 275, 275)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel28))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(ora))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel30)
+                    .addComponent(jLabel29))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(sveglia))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(data)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(jLabel3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(jLabel4))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(jLabel7))
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(stazione)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jLabel8))
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(16, 16, 16)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addComponent(meno, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addComponent(piu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(137, 137, 137)
+                                .addComponent(jLabel9))))))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -442,8 +554,7 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
