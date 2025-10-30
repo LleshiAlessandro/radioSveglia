@@ -7,25 +7,23 @@ package radiosveglia2;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Sveglia {
 
     private LocalTime orario;
     private LocalTime orarioSveglia;
     private LocalDate data;
-    private int impostaVolume;
     private String impostaFrequenza;
     private boolean rinviaSveglia;
     private DateTimeFormatter ora = DateTimeFormatter.ofPattern(("HH:mm:ss"));
-    private DateFormatter data = DateFormatter.ofPattern(("AAAA:MM:dd"));
+    private DateTimeFormatter dataForm = DateTimeFormatter.ofPattern(("YYYY-MM-dd"));
+
+    Random rdn = new Random();
     
     public Sveglia() {
-        this.orario = LocalTime.of(0, 0, 0);
-        this.orarioSveglia = LocalTime.of(0, 0, 0);
-        this.data = LocalDate.now();
-        this.impostaVolume = 5;
-        this.impostaFrequenza = "FM";
-        this.rinviaSveglia = false;
+
     }
 
     public void setOrario(int ore, int min, int sec) {
@@ -60,30 +58,18 @@ public class Sveglia {
         return this.data;
     }
 
-    public void setVolume(int vol) {
-        if (vol >= 0 && vol <= 10) {
-            this.impostaVolume = vol;
+    public int setVolume(int vol, int i) {
+        if (vol == 10 && i == -1) {
+            vol += i;
         }
-    }
-
-    public int getVolume() {
-        return this.impostaVolume;
-    }
-
-    public int aumentaVol() {
-        if (impostaVolume < 10) {
-            impostaVolume++;
+        else if (vol == 0 && i == 1){
+            vol += i;
         }
-        return impostaVolume;
-    }
-
-    public int diminuisciVol() {
-        if (impostaVolume > 0) {
-            impostaVolume--;
+        else if(vol > 0 && vol < 10){
+            vol += i;
         }
-        return impostaVolume;
+        return vol;
     }
-
     public void setFrequenza(String frequenza) {
         this.impostaFrequenza = frequenza;
     }
@@ -109,17 +95,55 @@ public class Sveglia {
         }
         
         array[0]=orario.format(ora);
-        array[0]=data.format(ora);
-        return ;
+        array[1]=data.format(dataForm);
+        return array;
     }
 
-    @Override
-    public String toString() {
-        return "Orario: " + orario +
-               ", Sveglia: " + orarioSveglia +
-               ", Data: " + data +
-               ", Volume: " + impostaVolume +
-               ", Frequenza: " + impostaFrequenza +
-               ", Rinvia: " + rinviaSveglia;
+    public ArrayList<String> random(){
+        ArrayList<String> rand = new ArrayList<> ();
+        
+        //random delle ore
+        int o = rdn.nextInt(0, 24);
+        int m = rdn.nextInt(0, 60);
+        int s = rdn.nextInt(0, 60);
+        //ore memorizzate in un array
+        int[] ore = new int[3];
+        ore[0] = o;
+        ore[1] = m;
+        ore[2] = s;
+        
+        orario = LocalTime.of(ore[0], ore[1], ore[2]);
+        orario.format(ora);
+        rand.add(String.valueOf(orario));
+        //random della data
+        int aa = rdn.nextInt(1, 10000);
+        int mm = rdn.nextInt(1, 13);
+        int dd = rdn.nextInt(1, 29);
+        //data memorizzata in un array
+        int[] data = new int[3];
+        data[0] = aa;
+        data[1] = mm;
+        data[2] = dd;
+        this.data = LocalDate.of(data[0], data[1], data[2]);
+        this.data = this.data.plusDays(rdn.nextInt(0, 4));
+        this.data.format(dataForm);
+        
+        rand.add(String.valueOf(this.data));
+        
+        //random della sveglia
+        int sveg = rdn.nextInt(2, 6);
+        orarioSveglia = orario.plusMinutes(sveg);
+        orarioSveglia.format(ora);
+        rand.add(String.valueOf(orarioSveglia));
+        
+        //rand stazione
+        int fr = rdn.nextInt(0,4);
+        rand.add(String.valueOf(fr));
+        
+        //random volume
+        int v = rdn.nextInt(0, 11);
+        rand.add(String.valueOf(v));
+        
+        return rand;
     }
 }
