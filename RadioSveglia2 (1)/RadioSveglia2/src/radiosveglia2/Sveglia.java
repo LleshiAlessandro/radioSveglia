@@ -6,6 +6,7 @@ package radiosveglia2;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Sveglia {
 
@@ -15,19 +16,21 @@ public class Sveglia {
     private int impostaVolume;
     private String impostaFrequenza;
     private boolean rinviaSveglia;
-
+    private DateTimeFormatter ora = DateTimeFormatter.ofPattern(("HH:mm:ss"));
+    private DateFormatter data = DateFormatter.ofPattern(("AAAA:MM:dd"));
+    
     public Sveglia() {
-        this.orario = LocalTime.of(0, 0);
-        this.orarioSveglia = LocalTime.of(7, 0);
+        this.orario = LocalTime.of(0, 0, 0);
+        this.orarioSveglia = LocalTime.of(0, 0, 0);
         this.data = LocalDate.now();
         this.impostaVolume = 5;
         this.impostaFrequenza = "FM";
         this.rinviaSveglia = false;
     }
 
-    public void setOrario(int ore, int min) {
-        if (ore >= 0 && ore <= 23 && min >= 0 && min <= 59) {
-            this.orario = LocalTime.of(ore, min);
+    public void setOrario(int ore, int min, int sec) {
+        if (ore >= 0 && ore <= 23 && min >= 0 && min <= 59 && sec >= 0 && sec <= 59) {
+            this.orario = LocalTime.of(ore, min, sec);
         }
     }
 
@@ -35,9 +38,9 @@ public class Sveglia {
         return this.orario;
     }
 
-    public void setOrarioSveglia(int ore, int min) {
-        if (ore >= 0 && ore <= 23 && min >= 0 && min <= 59) {
-            this.orarioSveglia = LocalTime.of(ore, min);
+    public void setOrarioSveglia(int ore, int min, int sec) {
+        if (ore >= 0 && ore <= 23 && min >= 0 && min <= 59 && sec >= 0 && sec <= 59) {
+            this.orarioSveglia = LocalTime.of(ore, min, sec);
         }
     }
 
@@ -99,9 +102,15 @@ public class Sveglia {
 
 //spiegazione per me stesso che no ci arrivo a ricordare todo:aggiunge un minuto e fa i controlli per i 59 min da solo
     public String[] aumentaTempoSveglia() {
-        this.orario = this.orario.plusMinutes(1);
+        String[] array=new String[2];
+        this.orario = this.orario.plusSeconds(1);
+        if(this.orario.equals(LocalTime.MIDNIGHT)){
+            data.plusDays(1);
+        }
         
-        return new String[] {String.valueOf(orario.getHour()), String.valueOf(orario.getMinute())};
+        array[0]=orario.format(ora);
+        array[0]=data.format(ora);
+        return ;
     }
 
     @Override
