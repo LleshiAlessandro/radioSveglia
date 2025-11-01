@@ -4,11 +4,14 @@
  */
 package radiosveglia2;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.sound.sampled.*;
+import javax.sound.sampled.Clip;
 
 public class Sveglia {
 
@@ -19,11 +22,13 @@ public class Sveglia {
     private boolean rinviaSveglia;
     private DateTimeFormatter ora = DateTimeFormatter.ofPattern(("HH:mm:ss"));
     private DateTimeFormatter dataForm = DateTimeFormatter.ofPattern(("YYYY-MM-dd"));
+    private Clip clip;
 
     Random rdn = new Random();
     
     public Sveglia() {
-
+        orario = LocalTime.now();
+        data = LocalDate.now();
     }
 
     public void setOrario(int ore, int min, int sec) {
@@ -93,7 +98,9 @@ public class Sveglia {
         if(this.orario.equals(LocalTime.MIDNIGHT)){
             data.plusDays(1);
         }
-        
+        if(orario.equals(orarioSveglia)){
+            songs();
+        }
         array[0]=orario.format(ora);
         array[1]=data.format(dataForm);
         return array;
@@ -145,5 +152,23 @@ public class Sveglia {
         rand.add(String.valueOf(v));
         
         return rand;
+    }
+    
+    public void songs(){
+        try {
+            File soundFile = new File(".src\\radiosveglia2\\song\\"+impostaFrequenza+".wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundFile);
+
+            clip = AudioSystem.getClip();
+            clip.open(audioStream);
+
+            
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
     }
 }

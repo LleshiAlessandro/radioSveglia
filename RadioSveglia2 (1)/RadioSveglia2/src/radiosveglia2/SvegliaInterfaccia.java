@@ -27,7 +27,9 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
             jLabel10.setText(array[0]);
             jLabel13.setText(array[1]);
         });
+        timer.start();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -406,7 +408,6 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(150, 150, 150)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,7 +464,7 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
         int sec = Integer.parseInt(jTextField10.getText());
         radioSveglia.setOrarioSveglia(ore, min, sec);
 
-        jLabel25.setText(String.format("%02d", radioSveglia.getOrarioSveglia().getHour()));
+        jLabel25.setText(String.format(radioSveglia.getOrarioSveglia().getHour()+ ":" +radioSveglia.getOrarioSveglia().getMinute() + ":" + radioSveglia.getOrarioSveglia().getSecond()));
 
     }//GEN-LAST:event_svegliaActionPerformed
 
@@ -474,7 +475,7 @@ public class SvegliaInterfaccia extends javax.swing.JFrame {
 
         radioSveglia.setData(anno, mese, giorno);
 
-        jLabel13.setText(String.format("%02d", radioSveglia.getData().getDayOfMonth()));
+        jLabel13.setText(radioSveglia.getData().getYear()+ ":" + radioSveglia.getData().getMonthValue() +":" +radioSveglia.getData().getDayOfMonth());
     }//GEN-LAST:event_dataActionPerformed
 
     private void stazioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stazioneActionPerformed
