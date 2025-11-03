@@ -19,6 +19,7 @@ public class Sveglia {
     private LocalTime orarioSveglia;
     private LocalDate data;
     private String impostaFrequenza;
+    private int volume;
     private boolean rinviaSveglia;
     private DateTimeFormatter ora = DateTimeFormatter.ofPattern(("HH:mm:ss"));
     private DateTimeFormatter dataForm = DateTimeFormatter.ofPattern(("YYYY-MM-dd"));
@@ -26,31 +27,34 @@ public class Sveglia {
 
     Random rdn = new Random();
     
+    //costruttore della classe
     public Sveglia() {
         orario = LocalTime.now();
         data = LocalDate.now();
+        volume = 5;
     }
 
+    //setter e getter dell' ora
     public void setOrario(int ore, int min, int sec) {
         if (ore >= 0 && ore <= 23 && min >= 0 && min <= 59 && sec >= 0 && sec <= 59) {
             this.orario = LocalTime.of(ore, min, sec);
         }
     }
-
     public LocalTime getOrario() {
         return this.orario;
     }
 
+    //setter e getter dell' ora della sveglia
     public void setOrarioSveglia(int ore, int min, int sec) {
         if (ore >= 0 && ore <= 23 && min >= 0 && min <= 59 && sec >= 0 && sec <= 59) {
             this.orarioSveglia = LocalTime.of(ore, min, sec);
         }
     }
-
     public LocalTime getOrarioSveglia() {
         return this.orarioSveglia;
     }
 
+    //setter e getter della data
     public void setData(int anno, int mese, int giorno) {
         if (anno >= 0 && anno <= 9999 && mese >= 1 && mese <= 12 && giorno >= 1 && giorno <= 31) {
             try {
@@ -58,40 +62,45 @@ public class Sveglia {
             } catch (Exception e) {}
         }
     }
-
     public LocalDate getData() {
         return this.data;
     }
 
-    public int setVolume(int vol, int i) {
-        if (vol == 10 && i == -1) {
-            vol += i;
+    //setter e getter del volume
+    public void setVolumePiu() {
+        this.volume++;
+        if(this.volume > 10){
+            this.volume--;
         }
-        else if (vol == 0 && i == 1){
-            vol += i;
-        }
-        else if(vol > 0 && vol < 10){
-            vol += i;
-        }
-        return vol;
     }
+    public void setVolumeMeno() {
+        this.volume--;
+        if(this.volume < 0){
+            this.volume++;
+        }
+    }
+    public int getVolume(){
+        return this.volume;
+    }
+    
+    //setter e getter della frequenza
     public void setFrequenza(String frequenza) {
         this.impostaFrequenza = frequenza;
     }
-
     public String getFrequenza() {
         return this.impostaFrequenza;
     }
-
+    
+    //setter e gettere del rinvia sveglia
     public void setRinviaSveglia(boolean rinvia) {
         this.rinviaSveglia = rinvia;
     }
-
     public boolean getRinviaSveglia() {
         return this.rinviaSveglia;
     }
+    
 
-//spiegazione per me stesso che no ci arrivo a ricordare todo:aggiunge un minuto e fa i controlli per i 59 min da solo
+    //spiegazione per me stesso che no ci arrivo a ricordare todo:faccio scorrere il tempo
     public String[] aumentaTempoSveglia() {
         String[] array=new String[2];
         this.orario = this.orario.plusSeconds(1);
@@ -105,7 +114,8 @@ public class Sveglia {
         array[1]=data.format(dataForm);
         return array;
     }
-
+    
+    //faccio il random dell' orario, della data,dell' orario della sveglia, del volume, della stazione radio
     public ArrayList<String> random(){
         ArrayList<String> rand = new ArrayList<> ();
         
@@ -154,9 +164,10 @@ public class Sveglia {
         return rand;
     }
     
+    //faccio suonare la sveglia
     public void songs(){
         try {
-            File soundFile = new File(".src\\radiosveglia2\\song\\"+impostaFrequenza+".wav");
+            File soundFile = new File(".\\src\\radiosveglia2\\song\\"+impostaFrequenza+".wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundFile);
 
             clip = AudioSystem.getClip();
@@ -171,4 +182,22 @@ public class Sveglia {
         
         
     }
+    
+    //modifico il volume della sveglia quando suona
+    public void setClipVolume() {
+    if (clip != null && clip.isOpen()) {
+        try {
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float min = gainControl.getMinimum();
+            float max = gainControl.getMaximum();
+
+            float percent = (volume / 10.0f) * 100;
+            float dB = min + (max - min) * (percent / 100.0f);
+
+            gainControl.setValue(dB);
+        } catch (Exception e) {
+            System.out.println("Controllo volume non supportato");
+        }
+    }
+}
 }
